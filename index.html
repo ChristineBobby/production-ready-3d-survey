@@ -20,7 +20,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="static/css/index.css">
 </head>
-<body>
+<body class="visual-rich">
 
 <!-- ==================== Sticky Navigation Bar ==================== -->
 <nav class="site-nav" id="site-nav">
@@ -51,11 +51,16 @@
       <h2 class="subtitle is-4 publication-subtitle">
         A Survey of Production-Ready 3D Generation
       </h2>
+      <div class="hero-meta-chips">
+        <span class="hero-chip">ACM Computing Surveys 2026</span>
+        <span class="hero-chip">Production-Ready 3D Pipeline</span>
+        <span class="hero-chip">150+ Methods Synthesized</span>
+      </div>
 
       <div class="publication-authors">
-        <span class="author-block"><a href="#">Jiafeng Wu</a><sup>1,2&dagger;</sup>,</span>
-        <span class="author-block"><a href="#">Zhuofan Lou</a><sup>1,3&dagger;</sup>,</span>
-        <span class="author-block"><a href="#">Jian Liu</a><sup>1&Dagger;</sup>,</span>
+        <span class="author-block"><a href="#">Jiafeng Wu</a><sup>1,2*&dagger;</sup>,</span>
+        <span class="author-block"><a href="#">Zhuofan Lou</a><sup>1,3*&dagger;</sup>,</span>
+        <span class="author-block"><a href="#">Jian Liu</a><sup>1*&Dagger;</sup>,</span>
         <span class="author-block"><a href="#">Dazhao Du</a><sup>1</sup>,</span>
         <span class="author-block"><a href="#">Chunchao Guo</a><sup>4</sup>,</span>
         <span class="author-block"><a href="#">Song Guo</a><sup>1&#9993;</sup></span>
@@ -67,6 +72,7 @@
           <sup>4</sup> Tencent Hunyuan
         </div>
         <div class="author-notes">
+          <sup>*</sup> Equal contribution &nbsp;&nbsp;
           <sup>&dagger;</sup> Work done during internship at HKUST &nbsp;&nbsp;
           <sup>&Dagger;</sup> Project lead &nbsp;&nbsp;
           <sup>&#9993;</sup> Corresponding author
@@ -1081,6 +1087,41 @@
       setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
     });
   }
+
+  // ---- Scroll reveal animations ----
+  document.addEventListener('DOMContentLoaded', function () {
+    var revealTargets = document.querySelectorAll(
+      '.section .title, .section .section-subtitle, .figure-block, .pipeline-flow, .highlight-card, .criteria-card, .table-container, .demo-card, .bibtex-block'
+    );
+
+    revealTargets.forEach(function (el, index) {
+      el.classList.add('reveal-item');
+      el.style.transitionDelay = (index % 6) * 70 + 'ms';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      revealTargets.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealTargets.forEach(function (el) {
+      observer.observe(el);
+    });
+  });
 </script>
 
 </body>
