@@ -4,7 +4,7 @@
    ============================================ */
 
 /* -- Google Fonts import -- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* -- Global -- */
 html {
@@ -165,13 +165,13 @@ section[id] {
 }
 
 .publication-title {
-  font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  font-family: 'Fredoka One', 'Rounded Mplus 1c', sans-serif;
   font-weight: 400;
   color: #ffffff;
   font-size: 2.6rem;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
 .publication-subtitle {
@@ -379,10 +379,10 @@ section[id] {
 }
 
 .section h2.title {
-  font-family: 'DM Serif Display', Georgia, serif;
+  font-family: 'Fredoka One', sans-serif;
   font-weight: 400;
   color: #1a1a2e;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   margin-bottom: 1.5rem;
 }
 
