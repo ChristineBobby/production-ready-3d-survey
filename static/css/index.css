@@ -784,6 +784,14 @@ section[id] {
 /* ============================================
    DEMO GRID CARDS
    ============================================ */
+.demo-category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #f0f0f8;
+  margin-bottom: 1rem !important;
+}
 .demo-grid {
   margin-top: 0.5rem;
 }
