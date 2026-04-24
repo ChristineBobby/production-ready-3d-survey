@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="static/css/index.css">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body class="visual-rich">
 
@@ -854,7 +853,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Interactive Demos</h2>
     <p class="has-text-centered mb-5 section-subtitle">
-      Hunyuan3D 3.0 is available below, and additional representative method viewers are in preparation.
+      A rotating Hunyuan3D 3.0 GIF preview is available below, and additional representative method viewers are in preparation.
     </p>
 
     <!-- Objects -->
@@ -887,22 +886,15 @@
       <div class="column is-3">
         <div class="demo-card demo-card--viewer">
           <div class="demo-card-preview">
-            <model-viewer
-              class="demo-model-viewer"
-              src="static/models/Hunyuan3.glb"
-              alt="Interactive preview of Hunyuan3D 3.0"
-              camera-controls
-              auto-rotate
-              environment-image="neutral"
-              shadow-intensity="1"
-              exposure="1.05"
-              interaction-prompt="none"
+            <img
+              class="demo-preview-image"
+              src="static/images/hunyuan3d-rotating.gif"
+              alt="Rotating GIF preview of Hunyuan3D 3.0"
               loading="lazy"
-              touch-action="pan-y"
-            ></model-viewer>
+            >
           </div>
           <div class="demo-card-label">Hunyuan3D 3.0</div>
-          <div class="demo-card-badge">Live Preview</div>
+          <div class="demo-card-badge">GIF Preview</div>
         </div>
       </div>
     </div>
