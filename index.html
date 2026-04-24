@@ -42,6 +42,12 @@
 
 <!-- ==================== Section 1: Hero ==================== -->
 <section class="hero is-light" id="hero">
+  <div class="hero-flow" aria-hidden="true">
+    <canvas class="hero-flow-canvas" id="hero-flow-canvas"></canvas>
+    <span class="flow-blob flow-blob-a"></span>
+    <span class="flow-blob flow-blob-b"></span>
+    <span class="flow-blob flow-blob-c"></span>
+  </div>
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
 
@@ -52,34 +58,33 @@
         A Survey of Production-Ready 3D Generation
       </h2>
       <div class="hero-meta-chips">
-        <span class="hero-chip">ACM Computing Surveys 2026</span>
-        <span class="hero-chip">Production-Ready 3D Pipeline</span>
-        <span class="hero-chip">150+ Methods Synthesized</span>
+        <span class="hero-chip">ACM CSUR 2026</span>
+        <span class="hero-chip">Production-Ready 3D Survey</span>
       </div>
 
       <div class="publication-authors">
-        <span class="author-block"><a href="#">Jiafeng Wu</a><sup>1,2*&dagger;</sup>,</span>
-        <span class="author-block"><a href="#">Zhuofan Lou</a><sup>1,3*&dagger;</sup>,</span>
-        <span class="author-block"><a href="#">Jian Liu</a><sup>1&Dagger;</sup>,</span>
-        <span class="author-block"><a href="#">Chunchao Guo</a><sup>4</sup>,</span>
-        <span class="author-block"><a href="#">Dazhao Du</a><sup>1</sup>,</span>
-        <span class="author-block"><a href="#">Song Guo</a><sup>1&#9993;</sup></span>
+        <span class="author-block"><a href="https://github.com/ChristineBobby" target="_blank">Jiafeng Wu</a><sup>1,2*&dagger;</sup>,</span>
+        <span class="author-block"><a href="https://github.com/ZhuofanLou" target="_blank">Zhuofan Lou</a><sup>1,3*&dagger;</sup>,</span>
+        <span class="author-block"><a href="https://hitcslj.github.io/" target="_blank">Jian Liu</a><sup>1&Dagger;</sup>,</span>
+        <span class="author-block"><a href="https://www.researchgate.net/scientific-contributions/Chunchao-Guo-2292911630" target="_blank">Chunchao Guo</a><sup>4</sup>,</span>
+        <span class="author-block"><a href="https://ddz16.github.io/" target="_blank">Dazhao Du</a><sup>1</sup>,</span>
+        <span class="author-block"><a href="https://cse.hkust.edu.hk/~songguo/" target="_blank">Song Guo</a><sup>1&#9993;</sup></span>
 
         <div class="affiliations">
           <div class="affiliation-row">
-            <sup>1</sup> The Kong University of Science and Technology &nbsp;&middot;&nbsp;
+            <sup>1</sup> The Hong Kong University of Science and Technology &nbsp;&middot;&nbsp;
             <sup>2</sup> Huazhong University of Science and Technology
           </div>
           <div class="affiliation-row">
             <sup>3</sup> Sichuan University &nbsp;&middot;&nbsp;
-            <sup>4</sup> Tencent Hunyuan
+            <sup>4</sup> Tencent
           </div>
         </div>
         <div class="author-notes">
-          <sup>*</sup> Equal contribution &nbsp;&nbsp;
-          <sup>&dagger;</sup> Work done during internship at HKUST &nbsp;&nbsp;
-          <sup>&Dagger;</sup> Project lead &nbsp;&nbsp;
-          <sup>&#9993;</sup> Corresponding author
+          <span class="note-item"><sup>*</sup> Equal contribution</span>
+          <span class="note-item"><sup>&dagger;</sup> Work done during internship at HKUST</span>
+          <span class="note-item"><sup>&Dagger;</sup> Project lead</span>
+          <span class="note-item"><sup>&#9993;</sup> Corresponding</span>
         </div>
       </div>
 
@@ -108,7 +113,7 @@
       <figure>
         <img src="static/images/fig1_pipeline.jpg" alt="Pipeline taxonomy overview of the survey" class="figure-image" style="max-width: 100%;">
         <figcaption class="figure-caption">
-          Our production-pipeline taxonomy bridges the gap between 3D synthesis research and engine-deployable assets, organizing the literature along two axes: asset tiers (objects, characters, scenes) and production lifecycle stages.
+          Our taxonomy unites 3D synthesis research with deployable engine assets.
         </figcaption>
       </figure>
     </div>
@@ -127,21 +132,16 @@
 <section class="section section--taxonomy" id="taxonomy">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Production Pipeline Taxonomy</h2>
-    <p class="has-text-centered mb-5 section-subtitle">
-      The survey's core contribution: a two-dimensional taxonomy mapping 3D generation methods onto the real-world asset production pipeline.
-    </p>
 
     <!-- Taxonomy tree figure -->
     <div class="has-text-centered mb-5">
       <figure>
         <img src="static/images/fig2_taxonomy.png" alt="Survey taxonomy tree" class="figure-image" style="max-width: 100%;">
-        <figcaption class="figure-caption">
-          Hierarchical taxonomy of production-ready 3D generation, organized into five pillars: Data Foundations, General Objects, Characters &amp; Avatars, Scenes &amp; Environments, and Evaluation.
-        </figcaption>
       </figure>
     </div>
 
     <!-- Pipeline Flow Visualization -->
+    <h4 class="taxonomy-mini-title has-text-centered">Pipeline Stages</h4>
     <div class="pipeline-flow">
       <div class="pipeline-stage" style="--stage-color: #667eea;">
         <div class="pipeline-stage-icon"><i class="fas fa-database"></i></div>
@@ -160,7 +160,7 @@
       <div class="pipeline-arrow"><i class="fas fa-chevron-right"></i></div>
       <div class="pipeline-stage" style="--stage-color: #4facfe;">
         <div class="pipeline-stage-icon"><i class="fas fa-palette"></i></div>
-        <div class="pipeline-stage-label">UV</div>
+        <div class="pipeline-stage-label">UV Unwrapping</div>
       </div>
       <div class="pipeline-arrow"><i class="fas fa-chevron-right"></i></div>
       <div class="pipeline-stage" style="--stage-color: #39c5bb;">
@@ -196,43 +196,43 @@
       </div>
 
       <div id="tab-objects" class="tab-content is-active">
-        <p>
-          <strong>General Objects</strong> follow a geometry&ndash;topology&ndash;appearance pipeline. Starting from multi-view or single-image inputs, methods first synthesize raw geometry (NeRF, 3D Gaussian Splatting, or direct mesh prediction), then optimize topology to produce manifold, quad-dominant meshes suitable for engine import. UV unwrapping and PBR material extraction complete the asset.
+        <p class="tab-intro">
+          <strong>General Objects</strong> follow a geometry&ndash;topology&ndash;appearance pipeline. Methods reconstruct geometry from single-view or multi-view input, refine topology into manifold quad-dominant meshes, then generate UV maps and physically based texture for engine-ready assets.
         </p>
         <h4 class="tab-content-heading">Representative Methods</h4>
         <ul class="method-highlights">
           <li>
             <div class="method-row">
-              <span><strong>TRELLIS.2 (2025)</strong> &mdash; 4B-parameter scalable LGM with PBR-ready output; sets new SotA on geometry fidelity</span>
+              <span><strong>DreamFusion 2022</strong> &mdash; Text to 3D generation via score distillation without 3D supervision</span>
               <span class="method-icon-links">
-                <a href="https://arxiv.org/abs/2512.14692" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                <a href="https://github.com/microsoft/TRELLIS" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://trellis3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                <a href="https://arxiv.org/abs/2209.14988" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                <a href="https://dreamfusion3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
               </span>
             </div>
           </li>
           <li>
             <div class="method-row">
-              <span><strong>TripoSG (2025)</strong> &mdash; High-fidelity single-image to clean mesh reconstruction</span>
+              <span><strong>3DShape2VecSet 2023</strong> &mdash; Diffusion based shape generation with compact vector set representation</span>
               <span class="method-icon-links">
-                <a href="https://arxiv.org/abs/2502.06608" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                <a href="https://github.com/VAST-AI-Research/TripoSG" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://arxiv.org/abs/2301.11445" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                <a href="https://github.com/1zb/3DShape2VecSet" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://1zb.github.io/3DShape2VecSet/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
               </span>
             </div>
           </li>
           <li>
             <div class="method-row">
-              <span><strong>SF3D (2024)</strong> &mdash; Feed-forward single-image to mesh+UV+PBR in under 1 second</span>
+              <span><strong>Fantasia3D 2023</strong> &mdash; Text to 3D synthesis by disentangling geometry and appearance</span>
               <span class="method-icon-links">
-                <a href="https://arxiv.org/abs/2408.00653" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                <a href="https://github.com/Stability-AI/stable-fast-3d" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://stable-fast-3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                <a href="https://arxiv.org/abs/2303.13873" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                <a href="https://github.com/Gorilla-Lab-SCUT/Fantasia3D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://fantasia3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
               </span>
             </div>
           </li>
           <li>
             <div class="method-row">
-              <span><strong>MeshGPT (2024)</strong> &mdash; VQ-VAE mesh tokenization enabling autoregressive generation of artist-like topology</span>
+              <span><strong>MeshGPT 2024</strong> &mdash; Mesh token generation with strong topology quality</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2311.15475" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/audi/MeshGPT" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -242,21 +242,20 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>DeepMesh (2025)</strong> &mdash; RL-aligned mesh generation with clean quad-dominant topology</span>
+              <span><strong>TRELLIS.2 2025</strong> &mdash; Scalable LGM with high geometry fidelity</span>
               <span class="method-icon-links">
-                <a href="https://arxiv.org/abs/2503.15265" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                <a href="https://github.com/zhaorw02/DeepMesh" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://zhaorw02.github.io/DeepMesh/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                <a href="https://arxiv.org/abs/2512.14692" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                <a href="https://github.com/microsoft/TRELLIS" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://trellis3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
               </span>
             </div>
           </li>
           <li>
             <div class="method-row">
-              <span><strong>DreamGaussian (2024)</strong> &mdash; 3DGS-based generation with mesh extraction and texture refinement in 2 minutes</span>
+              <span><strong>QuadGPT 2025</strong> &mdash; Autoregressive native quadrilateral mesh generation with topology control</span>
               <span class="method-icon-links">
-                <a href="https://arxiv.org/abs/2309.16653" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                <a href="https://github.com/dreamgaussian/dreamgaussian" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://dreamgaussian.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                <a href="https://arxiv.org/abs/2509.21420" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                <a href="https://hitcslj.github.io/QuadGPT/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
               </span>
             </div>
           </li>
@@ -264,14 +263,14 @@
       </div>
 
       <div id="tab-characters" class="tab-content">
-        <p>
-          <strong>Characters &amp; Avatars</strong> follow a body&ndash;head&ndash;rigging pipeline. Body generation methods produce articulated human meshes compatible with parametric models (SMPL/SMPL-X), while head-specific methods handle facial geometry, expression blendshapes, and hair modeling. The rigging stage assigns skeletal hierarchies and skinning weights (LBS-compatible).
+        <p class="tab-intro">
+          <strong>Characters &amp; Avatars</strong> follow a body&ndash;head&ndash;rigging pipeline. Methods generate articulated human bodies and expressive heads, align geometry with parametric priors, and assign skeletal structure with skinning weights to produce animation-ready assets with stable motion and facial control.
         </p>
         <h4 class="tab-content-heading">Representative Methods</h4>
         <ul class="method-highlights">
           <li>
             <div class="method-row">
-              <span><strong>TADA! (2024)</strong> &mdash; Text-to-avatar on SMPL-X with disentangled geometry and texture; LBS-ready output</span>
+              <span><strong>TADA! 2024</strong> &mdash; Text to avatar on SMPL X with LBS ready output</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2308.10899" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/TingtingLiao/TADA" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -281,7 +280,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>LHM (2025)</strong> &mdash; Single-image to animatable avatar with real-time rendering capability</span>
+              <span><strong>LHM 2025</strong> &mdash; Single image to animatable avatar in real time</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2503.10625" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/aigc3d/LHM" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -291,7 +290,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>LAM (2025)</strong> &mdash; Feed-forward head avatar at 280 FPS, mobile-deployment ready</span>
+              <span><strong>LAM 2025</strong> &mdash; Real time head avatar at 280 FPS for mobile</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2502.17796" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/aigc3d/LAM" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -301,7 +300,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>GaussianAvatars (2024)</strong> &mdash; 3DGS bound to FLAME triangles; pioneering mesh-anchored Gaussian head animation</span>
+              <span><strong>GaussianAvatars 2024</strong> &mdash; FLAME anchored 3DGS head avatar animation</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2312.02069" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/ShenhanQian/GaussianAvatars" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -311,7 +310,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>HRAvatar (2025)</strong> &mdash; High-resolution animatable avatar with PBR relighting</span>
+              <span><strong>HRAvatar 2025</strong> &mdash; High resolution animatable avatar with relighting</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2503.08224" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/Pixel-Talk/HRAvatar" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -321,7 +320,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>TexTalker (2025)</strong> &mdash; Speech-driven 3D talking head with texture disentanglement</span>
+              <span><strong>TexTalker 2025</strong> &mdash; Speech driven 3D talking head with texture control</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2503.00495" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/XuanchenLi/TexTalk" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -333,14 +332,14 @@
       </div>
 
       <div id="tab-scenes" class="tab-content">
-        <p>
-          <strong>Scenes &amp; Environments</strong> follow a layout&ndash;grounding&ndash;world-scale pipeline. Layout generation methods produce semantic floor plans from text or image prompts. Grounding methods instantiate assets with physically plausible placement. World-scale methods extend to large outdoor environments, addressing LOD management, streaming, and physics-aware composition.
+        <p class="tab-intro">
+          <strong>Scenes &amp; Environments</strong> follow a layout&ndash;grounding&ndash;world-scale pipeline. Methods first plan semantic layout, then ground assets with physically plausible placement, and finally scale to large environments with stable world composition.
         </p>
         <h4 class="tab-content-heading">Representative Methods</h4>
         <ul class="method-highlights">
           <li>
             <div class="method-row">
-              <span><strong>Holodeck (2024)</strong> &mdash; LLM-driven embodied environment generation with interactive object placement</span>
+              <span><strong>Holodeck 2024</strong> &mdash; LLM driven embodied scene generation with interaction</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2312.09067" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/allenai/Holodeck" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -350,7 +349,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>SceneCraft (2024)</strong> &mdash; Blender code agent that scripts full 3D scenes from text descriptions</span>
+              <span><strong>SceneCraft 2024</strong> &mdash; Text to 3D scenes through Blender scripting</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2403.01248" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
               </span>
@@ -358,7 +357,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>Infinigen (2023)</strong> &mdash; Procedural generation of photorealistic natural environments at unlimited scale</span>
+              <span><strong>Infinigen 2023</strong> &mdash; Procedural photoreal natural world generation</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2306.09310" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/princeton-vl/infinigen" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -368,7 +367,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>LayerPano3D (2025)</strong> &mdash; Layered panoramic scene generation for immersive 3D environments</span>
+              <span><strong>LayerPano3D 2025</strong> &mdash; Layered panoramic scene generation for immersive worlds</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2408.13252" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/3DTopia/LayerPano3D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -377,7 +376,7 @@
           </li>
           <li>
             <div class="method-row">
-              <span><strong>PhyScene (2024)</strong> &mdash; Physics-guided diffusion for interactable scenes with stability verification</span>
+              <span><strong>PhyScene 2024</strong> &mdash; Physics guided diffusion for stable interactive scenes</span>
               <span class="method-icon-links">
                 <a href="https://arxiv.org/abs/2404.09465" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 <a href="https://github.com/PhyScene/PhyScene" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -401,7 +400,8 @@
       <figure class="has-text-centered">
         <img src="static/images/fig_open_closed.png" alt="Open-Source vs Closed-Source 3D Generation Comparison" class="figure-image" style="max-width: 100%;">
         <figcaption class="figure-caption">
-          We compare state-of-the-art open-source and closed-source 3D generation systems on identical inputs. Open-source methods (TRELLIS.2, SF3D, InstantMesh, TripoSG) and commercial platforms (Rodin Gen1.5, Tripo v2.5, Hunyuan3D 3.1, Meshy AI 5) are rendered with identical Blender settings for fair evaluation.
+          <span class="caption-kicker">Unified Open and Commercial Benchmark</span>
+          We benchmark open-source and commercial 3D models under unified Blender rendering and input conditions: TRELLIS.2, SF3D, InstantMesh, TripoSG, Rodin Gen1.5, Tripo v2.5, Hunyuan3D 3.1, Meshy AI 5.
         </figcaption>
       </figure>
     </div>
@@ -411,7 +411,8 @@
       <figure class="has-text-centered">
         <img src="static/images/fig_characters.png" alt="Character and Avatar Generation Methods (2024-2025)" class="figure-image" style="max-width: 100%;">
         <figcaption class="figure-caption">
-          Representative character and avatar generation methods from 2024&ndash;2025, spanning text-to-avatar, feed-forward reconstruction, and speech-driven animation. Methods shown include TADA!, LHM, OmniAvatar, Disco4D, HRAvatar, LAM, Arc2Avatar, Avat3r, and TexTalker, showcasing production-ready features such as LBS-compatible rigging, PBR relighting, and real-time performance.
+          <span class="caption-kicker">Character and Avatar Landscape</span>
+          Recent methods cover text, feed-forward, speech-driven generation, with TADA!, LHM, OmniAvatar, Disco4D, HRAvatar, LAM, Arc2Avatar, Avat3r, TexTalker excelling in real-time performance.
         </figcaption>
       </figure>
     </div>
@@ -431,7 +432,6 @@
           </div>
           <div class="highlight-number">150+</div>
           <div class="highlight-label">Methods Surveyed</div>
-          <p class="highlight-desc">Spanning 7 paradigms across objects, characters, and scenes</p>
         </div>
       </div>
       <div class="column is-4">
@@ -441,7 +441,6 @@
           </div>
           <div class="highlight-number">40+</div>
           <div class="highlight-label">Datasets Catalogued</div>
-          <p class="highlight-desc">From ShapeNet to Infinigen, covering all asset tiers</p>
         </div>
       </div>
       <div class="column is-4">
@@ -451,7 +450,6 @@
           </div>
           <div class="highlight-number">6</div>
           <div class="highlight-label">Production Criteria</div>
-          <p class="highlight-desc">Defining engine-deployable production readiness</p>
         </div>
       </div>
     </div>
@@ -462,9 +460,6 @@
 <section class="section" id="criteria">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Production-Ready Criteria</h2>
-    <p class="has-text-centered mb-5 section-subtitle">
-      Six requirements a generated 3D asset must satisfy for deployment in interactive engines and simulation platforms.
-    </p>
 
     <div class="columns is-multiline criteria-grid">
       <div class="column is-4">
@@ -473,7 +468,7 @@
             <i class="fas fa-cubes"></i>
           </div>
           <h4 class="criteria-card-title">Manifold Mesh Topology</h4>
-          <p class="criteria-card-desc">Watertight, non-self-intersecting mesh with clean edge manifolds&mdash;suitable for Boolean operations, physics simulation, and engine import without repair.</p>
+          <p class="criteria-card-desc">Watertight non self intersecting meshes with clean manifold edges for Boolean editing physics simulation and direct engine import.</p>
         </div>
       </div>
       <div class="column is-4">
@@ -482,7 +477,7 @@
             <i class="fas fa-map"></i>
           </div>
           <h4 class="criteria-card-title">UV Parameterization</h4>
-          <p class="criteria-card-desc">Well-structured UV atlas with minimal distortion and no overlapping islands, enabling correct texture mapping and PBR material baking.</p>
+          <p class="criteria-card-desc">Clean UV atlases with low distortion and no overlap for accurate texture mapping and physically based material baking.</p>
         </div>
       </div>
       <div class="column is-4">
@@ -491,7 +486,7 @@
             <i class="fas fa-palette"></i>
           </div>
           <h4 class="criteria-card-title">Disentangled PBR Materials</h4>
-          <p class="criteria-card-desc">Separate physically based material maps (albedo, roughness, metallic, normal) that respond correctly to arbitrary lighting in real-time renderers.</p>
+          <p class="criteria-card-desc">Independent albedo roughness metallic and normal maps for robust relighting in real time renderers.</p>
         </div>
       </div>
       <div class="column is-4">
@@ -500,7 +495,7 @@
             <i class="fas fa-bone"></i>
           </div>
           <h4 class="criteria-card-title">Skeletal Rig &amp; Skinning</h4>
-          <p class="criteria-card-desc">A skeletal hierarchy with LBS-compatible skinning weights, allowing animation with standard mocap data or procedural animation systems.</p>
+          <p class="criteria-card-desc">Structured skeletons with LBS compatible skinning weights for mocap animation and procedural motion control.</p>
         </div>
       </div>
       <div class="column is-4">
@@ -509,7 +504,7 @@
             <i class="fas fa-pen-ruler"></i>
           </div>
           <h4 class="criteria-card-title">Post-generation Editability</h4>
-          <p class="criteria-card-desc">Generated assets can be further edited by artists in standard DCC tools (Blender, Maya, 3ds Max) without requiring full regeneration.</p>
+          <p class="criteria-card-desc">Assets remain editable in standard DCC tools such as Blender Maya and 3ds Max without full regeneration.</p>
         </div>
       </div>
       <div class="column is-4">
@@ -518,7 +513,7 @@
             <i class="fas fa-atom"></i>
           </div>
           <h4 class="criteria-card-title">Physics Metadata</h4>
-          <p class="criteria-card-desc">Collision meshes, mass properties, and physical material tags enabling participation in rigid-body or soft-body simulation within game engines.</p>
+          <p class="criteria-card-desc">Collision meshes mass properties and material tags support rigid body and soft body simulation in game engines.</p>
         </div>
       </div>
     </div>
@@ -529,8 +524,20 @@
 <section class="section has-background-light" id="methods">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
-    <p class="has-text-centered mb-5 section-subtitle">
-      Key methods organized by asset tier. Type abbreviations: <strong>LGM</strong>=Large Generation Model, <strong>FF</strong>=Feed-Forward, <strong>Topo</strong>=Topology-Aware, <strong>SDS</strong>=Score Distillation, <strong>Gen</strong>=Generative, <strong>FFrec</strong>=Feed-Forward Reconstruction, <strong>Lay</strong>=Layout, <strong>Gnd</strong>=Grounding, <strong>Wld</strong>=World-Scale.
+    <p class="has-text-centered mb-5 section-subtitle method-abbrev-legend">
+      <span class="legend-line">
+        <span class="legend-item"><span class="tag is-info is-light">LGM</span><span class="legend-eq">= Large Generation Model</span></span>
+        <span class="legend-item"><span class="tag is-success is-light">FF</span><span class="legend-eq">= Feed Forward</span></span>
+        <span class="legend-item"><span class="tag is-warning is-light">Topo</span><span class="legend-eq">= Topology Aware</span></span>
+        <span class="legend-item"><span class="tag is-link is-light">SDS</span><span class="legend-eq">= Score Distillation</span></span>
+        <span class="legend-item"><span class="tag is-primary is-light">Gen</span><span class="legend-eq">= Generative</span></span>
+      </span>
+      <span class="legend-line">
+        <span class="legend-item"><span class="tag is-danger is-light">FFrec</span><span class="legend-eq">= Feed Forward Reconstruction</span></span>
+        <span class="legend-item"><span class="tag is-link is-light">Lay</span><span class="legend-eq">= Layout</span></span>
+        <span class="legend-item"><span class="tag is-warning is-light">Gnd</span><span class="legend-eq">= Grounding</span></span>
+        <span class="legend-item"><span class="tag is-danger is-light">Wld</span><span class="legend-eq">= World Scale</span></span>
+      </span>
     </p>
 
     <div class="method-tabs">
@@ -556,38 +563,38 @@
             </thead>
             <tbody>
               <tr>
-                <td class="method-name">TRELLIS.2</td><td>2025</td>
-                <td><span class="tag is-info is-light">LGM</span></td>
-                <td>4B params, PBR-ready mesh+texture; SotA geometry fidelity</td>
+                <td class="method-name">DreamFusion</td><td>2022</td>
+                <td><span class="tag is-link is-light">SDS</span></td>
+                <td>Text to 3D generation via score distillation without 3D supervision</td>
                 <td class="method-links">
-                  <a href="https://arxiv.org/abs/2512.14692" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://github.com/microsoft/TRELLIS" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                  <a href="https://trellis3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                  <a href="https://arxiv.org/abs/2209.14988" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                  <a href="https://dreamfusion3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
                 </td>
               </tr>
               <tr>
-                <td class="method-name">TripoSG</td><td>2025</td>
-                <td><span class="tag is-info is-light">LGM</span></td>
-                <td>High-fidelity single-image to clean mesh reconstruction</td>
+                <td class="method-name">3DShape2VecSet</td><td>2023</td>
+                <td><span class="tag is-primary is-light">Gen</span></td>
+                <td>Diffusion based shape generation with compact vector set representation</td>
                 <td class="method-links">
-                  <a href="https://arxiv.org/abs/2502.06608" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://github.com/VAST-AI-Research/TripoSG" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="https://arxiv.org/abs/2301.11445" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                  <a href="https://github.com/1zb/3DShape2VecSet" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="https://1zb.github.io/3DShape2VecSet/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
                 </td>
               </tr>
               <tr>
-                <td class="method-name">SF3D</td><td>2024</td>
-                <td><span class="tag is-success is-light">FF</span></td>
-                <td>Mesh + UV + PBR in &lt;1 second from single image</td>
+                <td class="method-name">Fantasia3D</td><td>2023</td>
+                <td><span class="tag is-link is-light">SDS</span></td>
+                <td>Text to 3D synthesis by disentangling geometry and appearance</td>
                 <td class="method-links">
-                  <a href="https://arxiv.org/abs/2408.00653" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://github.com/Stability-AI/stable-fast-3d" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                  <a href="https://stable-fast-3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                  <a href="https://arxiv.org/abs/2303.13873" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                  <a href="https://github.com/Gorilla-Lab-SCUT/Fantasia3D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="https://fantasia3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
                 </td>
               </tr>
               <tr>
                 <td class="method-name">MeshGPT</td><td>2024</td>
                 <td><span class="tag is-warning is-light">Topo</span></td>
-                <td>VQ-VAE mesh tokenization; autoregressive artist-like topology</td>
+                <td>Mesh token generation with strong topology quality</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2311.15475" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/audi/MeshGPT" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -595,29 +602,28 @@
                 </td>
               </tr>
               <tr>
-                <td class="method-name">DeepMesh</td><td>2025</td>
-                <td><span class="tag is-warning is-light">Topo</span></td>
-                <td>RL-aligned mesh generation with clean quad-dominant topology</td>
+                <td class="method-name">TRELLIS.2</td><td>2025</td>
+                <td><span class="tag is-info is-light">LGM</span></td>
+                <td>4B model with high fidelity mesh and texture</td>
                 <td class="method-links">
-                  <a href="https://arxiv.org/abs/2503.15265" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://github.com/zhaorw02/DeepMesh" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                  <a href="https://zhaorw02.github.io/DeepMesh/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                  <a href="https://arxiv.org/abs/2512.14692" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                  <a href="https://github.com/microsoft/TRELLIS" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
+                  <a href="https://trellis3d.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
                 </td>
               </tr>
               <tr>
-                <td class="method-name">DreamGaussian</td><td>2024</td>
-                <td><span class="tag is-link is-light">SDS</span></td>
-                <td>3DGS + mesh extraction + texture refinement in 2 minutes</td>
+                <td class="method-name">QuadGPT</td><td>2025</td>
+                <td><span class="tag is-warning is-light">Topo</span></td>
+                <td>Autoregressive native quadrilateral mesh generation with topology control</td>
                 <td class="method-links">
-                  <a href="https://arxiv.org/abs/2309.16653" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                  <a href="https://github.com/dreamgaussian/dreamgaussian" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
-                  <a href="https://dreamgaussian.github.io/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
+                  <a href="https://arxiv.org/abs/2509.21420" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                  <a href="https://hitcslj.github.io/QuadGPT/" target="_blank" class="icon-link icon-link--project" title="Project"><i class="fas fa-globe"></i></a>
                 </td>
               </tr>
               <tr>
                 <td class="method-name">InstantMesh</td><td>2024</td>
                 <td><span class="tag is-success is-light">FF</span></td>
-                <td>Multi-view diffusion to mesh; fast feed-forward pipeline</td>
+                <td>Multi view diffusion to mesh with fast feed forward inference</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2404.07191" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/TencentARC/InstantMesh" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -626,7 +632,7 @@
               <tr>
                 <td class="method-name">LGM</td><td>2024</td>
                 <td><span class="tag is-info is-light">LGM</span></td>
-                <td>Large multi-view Gaussian model; 5-second generation</td>
+                <td>Large multi view Gaussian model with fast generation</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2402.05054" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/3DTopia/LGM" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -636,7 +642,7 @@
               <tr>
                 <td class="method-name">PivotMesh</td><td>2025</td>
                 <td><span class="tag is-warning is-light">Topo</span></td>
-                <td>Pivot-guided mesh generation with topology control</td>
+                <td>Pivot guided mesh generation with topology control</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2405.16890" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/whaohan/pivotmesh" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -646,7 +652,7 @@
               <tr>
                 <td class="method-name">Hunyuan3D 2.0</td><td>2025</td>
                 <td><span class="tag is-info is-light">LGM</span></td>
-                <td>Large-scale 3D asset generation with PBR material synthesis</td>
+                <td>Large scale 3D asset generation with material synthesis</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2501.12202" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/Tencent-Hunyuan/Hunyuan3D-2" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -668,7 +674,7 @@
               <tr>
                 <td class="method-name">TADA!</td><td>2024</td>
                 <td><span class="tag is-primary is-light">Gen</span></td>
-                <td>SMPL-X + texture; fully LBS-ready text-to-avatar</td>
+                <td>SMPL X avatar generation with LBS ready output</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2308.10899" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/TingtingLiao/TADA" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -678,7 +684,7 @@
               <tr>
                 <td class="method-name">LHM</td><td>2025</td>
                 <td><span class="tag is-success is-light">FF</span></td>
-                <td>Single-image animatable avatar; real-time rendering</td>
+                <td>Single image animatable avatar with real time rendering</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2503.10625" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/aigc3d/LHM" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -688,7 +694,7 @@
               <tr>
                 <td class="method-name">LAM</td><td>2025</td>
                 <td><span class="tag is-danger is-light">FFrec</span></td>
-                <td>280 FPS head avatar; mobile-deployment ready</td>
+                <td>280 FPS head avatar for mobile deployment</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2502.17796" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/aigc3d/LAM" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -698,7 +704,7 @@
               <tr>
                 <td class="method-name">GaussianAvatars</td><td>2024</td>
                 <td><span class="tag is-warning is-light">GS</span></td>
-                <td>3DGS on FLAME triangles; real-time animatable head avatars</td>
+                <td>FLAME anchored 3DGS head avatars in real time</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2312.02069" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/ShenhanQian/GaussianAvatars" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -708,7 +714,7 @@
               <tr>
                 <td class="method-name">HRAvatar</td><td>2025</td>
                 <td><span class="tag is-primary is-light">Gen</span></td>
-                <td>High-quality relightable Gaussian head avatar with PBR</td>
+                <td>High quality relightable Gaussian head avatar</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2503.08224" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/Pixel-Talk/HRAvatar" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -718,7 +724,7 @@
               <tr>
                 <td class="method-name">TexTalker</td><td>2025</td>
                 <td><span class="tag is-primary is-light">Gen</span></td>
-                <td>Speech-driven 3D talking head with texture disentanglement</td>
+                <td>Speech driven 3D talking head with texture control</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2503.00495" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/XuanchenLi/TexTalk" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -728,7 +734,7 @@
               <tr>
                 <td class="method-name">OmniAvatar</td><td>2025</td>
                 <td><span class="tag is-primary is-light">Gen</span></td>
-                <td>Versatile avatar generation with multi-modal control</td>
+                <td>Avatar generation with multimodal control</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2506.18866" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/Omni-Avatar/OmniAvatar" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -738,7 +744,7 @@
               <tr>
                 <td class="method-name">Disco4D</td><td>2025</td>
                 <td><span class="tag is-success is-light">FF</span></td>
-                <td>4D avatar from monocular video with dynamic appearance</td>
+                <td>Monocular video to dynamic 4D avatar</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2409.17280" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/disco-4d/Disco4D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -748,7 +754,7 @@
               <tr>
                 <td class="method-name">Arc2Avatar</td><td>2025</td>
                 <td><span class="tag is-danger is-light">FFrec</span></td>
-                <td>Archetype-conditioned avatar generation from sparse views</td>
+                <td>Archetype guided avatar generation from sparse views</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2501.05379" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/dimgerogiannis/Arc2Avatar" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -770,7 +776,7 @@
               <tr>
                 <td class="method-name">Holodeck</td><td>2024</td>
                 <td><span class="tag is-link is-light">Lay</span></td>
-                <td>LLM-driven embodied environment with interactive objects</td>
+                <td>Embodied scene generation with interactive objects</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2312.09067" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/allenai/Holodeck" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -780,7 +786,7 @@
               <tr>
                 <td class="method-name">SceneCraft</td><td>2024</td>
                 <td><span class="tag is-warning is-light">Gnd</span></td>
-                <td>Blender code agent; text-to-3D-scene via scripting</td>
+                <td>Text to 3D scene via Blender scripting</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2403.01248" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                 </td>
@@ -788,7 +794,7 @@
               <tr>
                 <td class="method-name">Infinigen</td><td>2023</td>
                 <td><span class="tag is-danger is-light">Wld</span></td>
-                <td>Procedural photorealistic nature at unlimited scale</td>
+                <td>Procedural photoreal natural world generation at large scale</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2306.09310" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/princeton-vl/infinigen" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -798,7 +804,7 @@
               <tr>
                 <td class="method-name">LayerPano3D</td><td>2025</td>
                 <td><span class="tag is-warning is-light">Gnd</span></td>
-                <td>Layered panoramic 3D scene generation for immersive VR</td>
+                <td>Layered panoramic scene generation for immersive VR</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2408.13252" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/3DTopia/LayerPano3D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -807,7 +813,7 @@
               <tr>
                 <td class="method-name">PhyScene</td><td>2024</td>
                 <td><span class="tag is-warning is-light">Gnd</span></td>
-                <td>Physics-guided diffusion with stability verification</td>
+                <td>Physics guided diffusion with stability checks</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2404.09465" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/PhyScene/PhyScene" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -817,7 +823,7 @@
               <tr>
                 <td class="method-name">GameGen-X</td><td>2024</td>
                 <td><span class="tag is-danger is-light">Wld</span></td>
-                <td>Generative model for open-world game environments</td>
+                <td>Open world game environment generation</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2411.00769" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/GameGen-X/GameGen-X" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -827,7 +833,7 @@
               <tr>
                 <td class="method-name">GALA3D</td><td>2024</td>
                 <td><span class="tag is-link is-light">Lay</span></td>
-                <td>Layout-guided 3D asset generation with compositional control</td>
+                <td>Layout guided 3D asset generation with compositional control</td>
                 <td class="method-links">
                   <a href="https://arxiv.org/abs/2402.07207" target="_blank" class="icon-link icon-link--paper" title="Paper"><i class="fas fa-file-pdf"></i></a>
                   <a href="https://github.com/VDIGPKU/GALA3D" target="_blank" class="icon-link icon-link--github" title="GitHub"><i class="fab fa-github"></i></a>
@@ -1027,6 +1033,151 @@
         nav.classList.remove('nav-open');
       });
     });
+  })();
+
+  // ---- Hero cursor-reactive glow ----
+  (function () {
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+
+    var rafId = 0;
+    function updateGlow(clientX, clientY) {
+      var rect = hero.getBoundingClientRect();
+      var x = ((clientX - rect.left) / rect.width) * 100;
+      var y = ((clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty('--hero-mx', x.toFixed(2) + '%');
+      hero.style.setProperty('--hero-my', y.toFixed(2) + '%');
+    }
+
+    hero.addEventListener('pointermove', function (e) {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(function () {
+        updateGlow(e.clientX, e.clientY);
+      });
+    });
+
+    hero.addEventListener('pointerleave', function () {
+      hero.style.setProperty('--hero-mx', '18%');
+      hero.style.setProperty('--hero-my', '24%');
+    });
+  })();
+
+  // ---- Hero autonomous color flow (JS-driven) ----
+  (function () {
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+
+    var start = performance.now();
+    function tick(now) {
+      var t = (now - start) * 0.001;
+
+      var bgX = Math.sin(t * 0.42) * 18;
+      var bgY = Math.cos(t * 0.36) * 9;
+      var midY = Math.sin(t * 0.58) * 12;
+
+      hero.style.setProperty('--flow-bg-x', bgX.toFixed(3) + '%');
+      hero.style.setProperty('--flow-bg-y', bgY.toFixed(3) + '%');
+      hero.style.setProperty('--flow-mid-y', midY.toFixed(3) + '%');
+
+      var layerX = Math.sin(t * 0.74) * 48;
+      var layerY = Math.cos(t * 0.63) * 26;
+      var layerS = 1.04 + Math.sin(t * 0.52) * 0.06;
+      var pulse = Math.sin(t * 1.25) * 0.11;
+      hero.style.setProperty('--flow-layer-x', layerX.toFixed(2) + 'px');
+      hero.style.setProperty('--flow-layer-y', layerY.toFixed(2) + 'px');
+      hero.style.setProperty('--flow-layer-s', layerS.toFixed(4));
+      hero.style.setProperty('--flow-pulse', pulse.toFixed(4));
+
+      var fieldX = Math.sin(t * 0.48) * 32;
+      var fieldY = Math.cos(t * 0.53) * 20;
+      var fieldS = 1.02 + Math.sin(t * 0.61) * 0.035;
+      hero.style.setProperty('--flow-field-x', fieldX.toFixed(2) + 'px');
+      hero.style.setProperty('--flow-field-y', fieldY.toFixed(2) + 'px');
+      hero.style.setProperty('--flow-field-s', fieldS.toFixed(4));
+
+      hero.style.setProperty('--blob-a-tx', (Math.sin(t * 0.83) * 72).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-a-ty', (Math.cos(t * 0.67) * 54).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-a-s', (1.02 + Math.sin(t * 0.79) * 0.12).toFixed(4));
+      hero.style.setProperty('--blob-a-o', (0.47 + (Math.sin(t * 0.95) + 1) * 0.12).toFixed(4));
+
+      hero.style.setProperty('--blob-b-tx', (Math.cos(t * 0.91) * 68).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-b-ty', (Math.sin(t * 0.73) * 58).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-b-s', (1.01 + Math.cos(t * 0.86) * 0.13).toFixed(4));
+      hero.style.setProperty('--blob-b-o', (0.43 + (Math.cos(t * 1.08) + 1) * 0.11).toFixed(4));
+
+      hero.style.setProperty('--blob-c-tx', (Math.sin(t * 0.62) * 62).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-c-ty', (Math.cos(t * 0.57) * 64).toFixed(2) + 'px');
+      hero.style.setProperty('--blob-c-s', (1.03 + Math.sin(t * 0.69) * 0.1).toFixed(4));
+      hero.style.setProperty('--blob-c-o', (0.41 + (Math.sin(t * 0.88) + 1) * 0.1).toFixed(4));
+
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  // ---- Hero canvas fluid gradient ----
+  (function () {
+    var hero = document.getElementById('hero');
+    var canvas = document.getElementById('hero-flow-canvas');
+    if (!hero || !canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var width = 0;
+    var height = 0;
+    var blobs = [
+      { x: 0.16, y: 0.24, r: 0.34, dx: 0.12, dy: 0.08, hue: '132, 156, 255', alpha: 0.42, speed: 0.19 },
+      { x: 0.78, y: 0.3, r: 0.3, dx: -0.1, dy: 0.12, hue: '72, 225, 196', alpha: 0.34, speed: 0.23 },
+      { x: 0.48, y: 0.82, r: 0.4, dx: 0.09, dy: -0.11, hue: '110, 91, 223', alpha: 0.28, speed: 0.16 },
+      { x: 0.56, y: 0.12, r: 0.24, dx: 0.06, dy: 0.07, hue: '255, 255, 255', alpha: 0.16, speed: 0.27 }
+    ];
+
+    function resizeCanvas() {
+      var rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function drawBlob(blob, t) {
+      var cx = (blob.x + Math.sin(t * blob.speed) * blob.dx) * width;
+      var cy = (blob.y + Math.cos(t * (blob.speed * 1.15)) * blob.dy) * height;
+      var radius = Math.max(width, height) * (blob.r + Math.sin(t * (blob.speed * 0.8)) * 0.025);
+      var gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      gradient.addColorStop(0, 'rgba(' + blob.hue + ',' + blob.alpha.toFixed(3) + ')');
+      gradient.addColorStop(0.42, 'rgba(' + blob.hue + ',' + (blob.alpha * 0.58).toFixed(3) + ')');
+      gradient.addColorStop(0.82, 'rgba(' + blob.hue + ',0.03)');
+      gradient.addColorStop(1, 'rgba(' + blob.hue + ',0)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function render(now) {
+      var t = now * 0.001;
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'screen';
+
+      for (var i = 0; i < blobs.length; i += 1) {
+        drawBlob(blobs[i], t);
+      }
+
+      ctx.globalCompositeOperation = 'overlay';
+      ctx.fillStyle = 'rgba(255,255,255,0.035)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'source-over';
+
+      requestAnimationFrame(render);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    requestAnimationFrame(render);
   })();
 
   // ---- Generic tab switching ----
