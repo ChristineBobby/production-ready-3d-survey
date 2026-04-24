@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>From Visual Synthesis to Interactive Worlds: A Survey of Production-Ready 3D Generation</title>
+  <title>From Visual Synthesis to Interactive Worlds: Toward Production-Ready 3D Generation</title>
   <meta name="description" content="A comprehensive survey of production-ready 3D generation for games, embodied AI, and interactive worlds. ACM Computing Surveys 2026.">
   <meta name="keywords" content="3D generation, production-ready, survey, ACM Computing Surveys, game development, NeRF, 3D Gaussian Splatting, digital twins">
 
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="static/css/index.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body class="visual-rich">
 
@@ -853,7 +854,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Interactive Demos</h2>
     <p class="has-text-centered mb-5 section-subtitle">
-      Interactive 3D model viewers for representative methods are in preparation.
+      Hunyuan3D 3.0 is available below, and additional representative method viewers are in preparation.
     </p>
 
     <!-- Objects -->
@@ -884,10 +885,24 @@
         </div>
       </div>
       <div class="column is-3">
-        <div class="demo-card">
-          <div class="demo-card-preview"><i class="fas fa-cube fa-2x"></i></div>
-          <div class="demo-card-label">DeepMesh</div>
-          <div class="demo-card-badge">Coming Soon</div>
+        <div class="demo-card demo-card--viewer">
+          <div class="demo-card-preview">
+            <model-viewer
+              class="demo-model-viewer"
+              src="static/models/Hunyuan3.glb"
+              alt="Interactive preview of Hunyuan3D 3.0"
+              camera-controls
+              auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              exposure="1.05"
+              interaction-prompt="none"
+              loading="lazy"
+              touch-action="pan-y"
+            ></model-viewer>
+          </div>
+          <div class="demo-card-label">Hunyuan3D 3.0</div>
+          <div class="demo-card-badge">Live Preview</div>
         </div>
       </div>
     </div>
